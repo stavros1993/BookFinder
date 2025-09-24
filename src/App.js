@@ -18,8 +18,7 @@ function App() {
     <div>
       <BrowserRouter>
         <BooksProvider>
-          <Header
-          />
+          <Header />
           <Routes>
             <Route
               path="/"
