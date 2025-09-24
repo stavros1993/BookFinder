@@ -1,5 +1,5 @@
-import "./EmptyPage.scss";
 import OpenSearchModalButton from "./ui/OpenSearchModalButton";
+import "./EmptyPage.scss";
 
 function EmptyPage({ title, children }) {
   return (

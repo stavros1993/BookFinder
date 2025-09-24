@@ -1,11 +1,11 @@
-import "./Header.scss";
+import { useEffect } from "react";
+import { useLocalStorageState } from "./useLocalStorageState";
 import Logo from "./Logo";
 import SearchPopup from "./SearchPopup";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
 import SearchBar from "./SearchBar";
-import { useEffect } from "react";
-import { useLocalStorageState } from "./useLocalStorageState";
+import "./Header.scss";
 
 function Header() {
   const [darkMode, setDarkMode] = useLocalStorageState(true, "theme");

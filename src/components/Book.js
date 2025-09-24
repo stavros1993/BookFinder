@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Spinner from "./ui/Spinner";
+import { useParams } from "react-router-dom";
 import { useBooks } from "./contexts/BooksProvider";
+import Spinner from "./ui/Spinner";
+import StarRating from "./starRating";
 import Star from "./icons/Star";
 import "./Book.scss";
-import StarRating from "./starRating";
 
 function Book() {
   const BASE_URL = "https://www.googleapis.com/books/v1/volumes/";

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./ReadingChallenge.scss";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import ReadingChallengePopup from "./ReadingChallengePopup";
 import { useLocalStorageState } from "./useLocalStorageState";
+import "./ReadingChallenge.scss";
 
 function ReadingChallenge() {
   const [booksRead, setBooksRead] = useLocalStorageState(
@@ -95,7 +95,7 @@ function ReadingChallenge() {
                     </button>
                   </>
                 )}
-               </div>
+              </div>
             </div>
           </div>
 

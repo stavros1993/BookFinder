@@ -18,8 +18,8 @@ function Ratings() {
     return (
       <EmptyPage title="No Ratings Yet">
         <p className="font-18">
-          You haven't rated any books yet. Rate a book to see your ratings
-          appear here.
+          You haven’t rated any books yet. Start rating to see your list appear
+          here
         </p>
       </EmptyPage>
     );

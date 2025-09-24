@@ -1,5 +1,5 @@
-import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 
 function ReadingChallengePopup({
   show,

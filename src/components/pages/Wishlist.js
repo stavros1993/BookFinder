@@ -1,12 +1,12 @@
-import { useBooks } from "../contexts/BooksProvider";
-import "./Wishlist.scss";
-import Search from "../icons/Search";
-import Dropdown from "react-bootstrap/Dropdown";
 import { useState, useEffect } from "react";
+import { useBooks } from "../contexts/BooksProvider";
 import WishlistItem from "../WishlistItem";
 import DeleteConfirmationPopup from "../DeleteConfirmationPopup";
 import EmptyPage from "../EmptyPage";
+import Search from "../icons/Search";
 import CloseIcon from "../icons/CloseIcon";
+import Dropdown from "react-bootstrap/Dropdown";
+import "./Wishlist.scss";
 
 function Wishlist() {
   const { wishlist, removeFromWishlist } = useBooks();

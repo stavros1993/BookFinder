@@ -1,5 +1,5 @@
-import Search from "./icons/Search";
 import { useBooks } from "./contexts/BooksProvider";
+import Search from "./icons/Search";
 
 function SearchBar() {
   const { setShowSearchModal } = useBooks();

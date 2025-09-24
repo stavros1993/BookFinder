@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Star from "./icons/Star";
 import DeleteButton from "./ui/DeleteButton";
+import Star from "./icons/Star";
 import { useBooks } from "./contexts/BooksProvider";
 
 function WishlistItem({ item, index }) {

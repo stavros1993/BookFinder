@@ -1,5 +1,5 @@
-import "./Hero.scss";
 import OpenSearchModalButton from "./ui/OpenSearchModalButton";
+import "./Hero.scss";
 
 function Hero() {
 

@@ -1,12 +1,12 @@
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
+import Spinner from "./ui/Spinner";
+import Nav from "react-bootstrap/Nav";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css";
 import "./BestSellerBooks.scss";
-import { useState, useEffect } from "react";
-import Spinner from "./ui/Spinner";
-import Nav from "react-bootstrap/Nav";
 
 const NYT_API_KEY = "7QWNAdE2xwF0SCWJqeoDmEfCRHM6ONQq";
 function BestSellerBooks() {
@@ -14,7 +14,7 @@ function BestSellerBooks() {
     useState(false);
   const [bestSellerBooks, setBestSellerBooks] = useState([]);
   const [errorBestSellerBooks, setErrorBestSellerBooks] = useState("");
-  const [filterQuery, setFilterQuery] = useState("current"); //Default value is current week
+  const [filterQuery, setFilterQuery] = useState("current");
 
   useEffect(
     function () {
@@ -112,12 +112,11 @@ function BestSellerBooks() {
               slidesPerView={2.5}
               navigation
               breakpoints={{
-
                 576: {
-                  slidesPerView:4,
+                  slidesPerView: 4,
                 },
                 768: {
-                  slidesPerView:5,
+                  slidesPerView: 5,
                 },
 
                 992: {

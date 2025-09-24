@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./BookSearchResultItem.scss";
 import { useBooks } from "./contexts/BooksProvider";
 import Star from "./icons/Star";
+import "./BookSearchResultItem.scss";
 
 function BookSearchResultItem({ item, setShowSearchModal, setSearchQuery }) {
   const { addToWishlist, removeFromWishlist, checkHasBeenAddedToWishlist } =

@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import "./MobileMenu.scss";
+import { useBooks } from "./contexts/BooksProvider";
 import Home from "./icons/Home";
 import Search from "./icons/Search";
 import Library from "./icons/Library";
 import Star from "./icons/Star";
-import { useBooks } from "./contexts/BooksProvider";
+import "./MobileMenu.scss";
 
 function MobileMenu() {
   const { setShowSearchModal } = useBooks();
@@ -15,7 +15,7 @@ function MobileMenu() {
           <Home />
           <span className="d-block pt-2">Home</span>
         </NavLink>
-        <button onClick={()=>setShowSearchModal(true)}>
+        <button onClick={() => setShowSearchModal(true)}>
           <Search />
           <span className="d-block pt-2">Search</span>
         </button>

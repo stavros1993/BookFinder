@@ -1,9 +1,9 @@
-import "./WebsiteFeatures.scss";
+import WebsiteFeatureItem from "./WebsiteFeatureItem";
 import Search from "./icons/Search";
 import Bookmark from "./icons/Bookmark";
 import Star from "./icons/Star";
 import Challenge from "./icons/Challenge";
-import WebsiteFeatureItem from "./WebsiteFeatureItem";
+import "./WebsiteFeatures.scss";
 
 function WebsiteFeatures() {
   return (
@@ -11,8 +11,8 @@ function WebsiteFeatures() {
       <div className="container-sm">
         <div className="row gx-3">
           <WebsiteFeatureItem title="Find" Icon={Search}>
-            Search for new books and find titles that match your
-            interests and preferences.
+            Search for new books and find titles that match your interests and
+            preferences.
           </WebsiteFeatureItem>
           <WebsiteFeatureItem title="Track" Icon={Bookmark}>
             Save the books you want to list in your wishlist to easily keep
