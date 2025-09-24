@@ -17,7 +17,7 @@ body {
 
       @media (max-width: 767px) {
         flex: 0 0 100px;
-      max-width: 100px;
+        max-width: 100px;
       }
     }
 
@@ -29,15 +29,13 @@ body {
 
     .bottom-info {
       span {
-        color: oklch(70.7% 0.022 261.325) !important;
-        line-height: 1;
+        color: var(--light-grey-2) !important;
 
         @media (max-width: 575px) {
           display: block;
           padding-bottom: 5px;
           &::before {
             display: none;
-
           }
         }
 
@@ -68,7 +66,7 @@ body {
     .book-item {
       .bottom-info {
         span {
-          color: var(--dark-grey);
+          color: var(--dark-grey) !important;
         }
       }
     }

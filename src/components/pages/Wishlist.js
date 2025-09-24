@@ -6,6 +6,7 @@ import EmptyPage from "../EmptyPage";
 import Search from "../icons/Search";
 import CloseIcon from "../icons/CloseIcon";
 import Dropdown from "react-bootstrap/Dropdown";
+import Form from "react-bootstrap/Form";
 import "./Wishlist.scss";
 
 function Wishlist() {
@@ -17,6 +18,7 @@ function Wishlist() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState(null);
   const [sortByText, setSortByText] = useState("");
+  const [showOnlyAvailable, setShowOnlyAvailable] = useState(false);
 
   useEffect(function () {
     document.title = "My Wishlist | BookFinder";
@@ -30,6 +32,19 @@ function Wishlist() {
           item.authors.toLowerCase().includes(searchQuery.toLowerCase())
         );
       });
+
+      if (showOnlyAvailable) {
+        filteredResults = wishlist.filter(function (item) {
+          return item.price;
+        });
+      }
+      // else {
+      //   filteredResults = wishlist.filter(function (item) {
+      //     return item.price;
+      //   })
+      // }
+
+ 
 
       switch (sortBy) {
         case "priceAsc":
@@ -71,7 +86,7 @@ function Wishlist() {
 
       setWishlistFilteredData(filteredResults);
     },
-    [searchQuery, wishlist, sortBy]
+    [searchQuery, wishlist, sortBy, showOnlyAvailable]
   );
 
   const handleSelect = (eventKey) => {
@@ -94,94 +109,109 @@ function Wishlist() {
       <DeleteConfirmationPopup removeBook={removeFromWishlist} />
 
       <div className="container">
-        <div className="d-flex gx-2 gx-sm-4 row align-items-start mb-4">
-          <div className="col-sm-auto">
+        <div className="d-flex gx-2 gx-sm-4 row align-items-center align-items-lg-start mb-4">
+          <div className="col-lg-auto pb-2 pb-sm-0">
             <h1 className="h3 mb-0">My Wishlist</h1>
           </div>
+
           {wishlist.length > 0 && (
             <>
-              <div className="ms-auto col-sm-auto pt-3 pt-sm-0">
-                <Dropdown onSelect={handleSelect}>
-                  <Dropdown.Toggle
-                    id="filter-dropdown"
-                    className="btn btn-bordered"
-                  >
-                    {sortByText ? sortByText : " Sort by"}
-                  </Dropdown.Toggle>
+              <div className="col-lg">
+                <Form>
+                  <div className="row align-items-center">
+                    <div className="ms-lg-auto col-sm-auto align-self-center pb-3 pb-sm-0">
+                      <Form.Check className="cursor-pointer"
+                        onClick={() => setShowOnlyAvailable((prev) => !prev)}
+                        type="switch"
+                        id="custom-switch"
+                        label="Show only available"
+                      />
+                    </div>
+                    <div className="col-sm col-lg-auto">
+                      <Dropdown onSelect={handleSelect}>
+                        <Dropdown.Toggle
+                          id="filter-dropdown"
+                          className="btn btn-bordered"
+                        >
+                          {sortByText ? sortByText : " Sort by"}
+                        </Dropdown.Toggle>
 
-                  <Dropdown.Menu className="w-100">
-                    <Dropdown.Item
-                      eventKey="Price (Low → High)"
-                      onClick={() => {
-                        setSortBy("priceAsc");
-                      }}
-                    >
-                      Price (Low → High)
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="Price (High → Low)"
-                      onClick={() => {
-                        setSortBy("priceDesc");
-                      }}
-                    >
-                      Price (High → Low)
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="Title (Low → High)"
-                      onClick={() => {
-                        setSortBy("titleAsc");
-                      }}
-                    >
-                      Title (A → Z)
-                    </Dropdown.Item>
+                        <Dropdown.Menu className="w-100">
+                          <Dropdown.Item
+                            eventKey="Price (Low → High)"
+                            onClick={() => {
+                              setSortBy("priceAsc");
+                            }}
+                          >
+                            Price (Low → High)
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            eventKey="Price (High → Low)"
+                            onClick={() => {
+                              setSortBy("priceDesc");
+                            }}
+                          >
+                            Price (High → Low)
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            eventKey="Title (Low → High)"
+                            onClick={() => {
+                              setSortBy("titleAsc");
+                            }}
+                          >
+                            Title (A → Z)
+                          </Dropdown.Item>
 
-                    <Dropdown.Item
-                      eventKey="Title (High → Low)"
-                      onClick={() => {
-                        setSortBy("titleDesc");
-                      }}
-                    >
-                      Title (Z → A)
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="Rating (Low → High)"
-                      onClick={() => {
-                        setSortBy("ratingAsc");
-                      }}
-                    >
-                      Rating (Low → High)
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      eventKey="Rating (High → Low)"
-                      onClick={() => {
-                        setSortBy("ratingDesc");
-                      }}
-                    >
-                      Rating (High → Low)
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
+                          <Dropdown.Item
+                            eventKey="Title (High → Low)"
+                            onClick={() => {
+                              setSortBy("titleDesc");
+                            }}
+                          >
+                            Title (Z → A)
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            eventKey="Rating (Low → High)"
+                            onClick={() => {
+                              setSortBy("ratingAsc");
+                            }}
+                          >
+                            Rating (Low → High)
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            eventKey="Rating (High → Low)"
+                            onClick={() => {
+                              setSortBy("ratingDesc");
+                            }}
+                          >
+                            Rating (High → Low)
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </div>
 
-              <div className="col-md-auto pt-3 pt-md-0">
-                <div className="search-wishlist-wrapper">
-                  <input
-                    className="search-wishlist"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search title of author..."
-                  />
-                  {searchQuery.length ? (
-                    <button
-                      className="btn btn-icon cancel-search-btn"
-                      onClick={() => setSearchQuery("")}
-                    >
-                      <CloseIcon />
-                    </button>
-                  ) : (
-                    <Search />
-                  )}
-                </div>
+                    <div className=" col-md col-lg-auto pt-3 pt-md-0">
+                      <div className="search-wishlist-wrapper w-100">
+                        <input
+                          className="search-wishlist w-100"
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          placeholder="Search title of author..."
+                        />
+                        {searchQuery.length ? (
+                          <button
+                            className="cancel-search-btn"
+                            onClick={() => setSearchQuery("")}
+                          >
+                            <CloseIcon />
+                          </button>
+                        ) : (
+                          <Search />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </Form>
               </div>
             </>
           )}

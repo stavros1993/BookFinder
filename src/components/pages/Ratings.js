@@ -1,12 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useLocalStorageState } from "../useLocalStorageState";
 import { useBooks } from "../contexts/BooksProvider";
-import RatingItem from "../RatingItem";
+import RatingListItem from "../RatingListItem";
+import RatingGridItem from "../RatingGridItem";
 import RatingsStats from "../RatingsStats";
 import DeleteConfirmationPopup from "../DeleteConfirmationPopup";
 import EmptyPage from "../EmptyPage";
+import ListView from "../icons/ListView";
+import GridView from "../icons/GridView";
+import { ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 
 function Ratings() {
   const { ratedBooks } = useBooks();
+  const [view, setView] =  useLocalStorageState("grid", "view-type");
 
   useEffect(function () {
     document.title = "My Ratings | BookFinder";
@@ -29,9 +35,19 @@ function Ratings() {
     <main className="ratings-page">
       <DeleteConfirmationPopup removeBook={removeFromRatedBooks} />
       <div className="container-md">
-        <div class="row align-items-center align-items-center mb-4">
+        <div class="row align-items-top align-items-center mb-4">
           <div class="col-auto">
             <h1 class="h3 mb-0">My Ratings</h1>
+          </div>
+          <div class="col text-end d-none d-sm-block">
+            <ToggleButtonGroup type="radio" name="options" value={view}>
+              <ToggleButton value={"grid"} onClick={() => setView("grid")}>
+                <GridView />
+              </ToggleButton>
+              <ToggleButton value={"list"} onClick={() => setView("list")}>
+                <ListView />
+              </ToggleButton>
+            </ToggleButtonGroup>
           </div>
         </div>
         <>
@@ -39,9 +55,13 @@ function Ratings() {
           <div className="ratings-row row">
             {ratedBooks.map(function (book) {
               return (
-                <div className="col-sm-6 col-lg-4 pb-4">
-                  <RatingItem item={book} />
-                </div>
+                <>
+                  {view === "grid" ? (
+                    <RatingGridItem item={book} />
+                  ) : (
+                    <RatingListItem item={book} />
+                  )}
+                </>
               );
             })}
           </div>

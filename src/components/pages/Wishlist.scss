@@ -2,10 +2,11 @@ body {
   .wishlist-page {
     .dropdown-toggle {
       min-width: 210px;
-      @media (max-width: 575px) {
+      @media (max-width: 991px) {
         width: 100%;
       }
     }
+
     .search-wishlist-wrapper {
       position: relative;
       .search-wishlist {
@@ -32,6 +33,13 @@ body {
         transform: translateY(-50%);
         width: 15px;
         height: 15px;
+        background: transparent !important;
+        border: none !important;
+        padding: 0px !important;
+        outline: none !important;
+        &:active {
+          border-color: transparent !important ;
+        }
         path {
           fill: var(--grey);
         }
@@ -45,6 +53,13 @@ body {
           width: 15px;
           height: 15px;
         }
+      }
+    }
+
+    .form-check.form-switch {
+      input,
+      label {
+        cursor: pointer;
       }
     }
 

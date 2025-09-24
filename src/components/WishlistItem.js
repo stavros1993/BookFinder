@@ -18,12 +18,12 @@ function WishlistItem({ item, index }) {
           />
         </Link>
       </td>
-      <td>
+      <td className="mw-200">
         <Link className="btn btn-link text-start" to={`/book/${item.id}`}>
           {item.title}
         </Link>
       </td>
-      <td>{item.authors}</td>
+      <td className="mw-200">{item.authors}</td>
       {/* <td>{item.genres.length>100 ?item.genres.substring(0,100)+"..." :item.genres}</td> */}
       <td>
         <span className="d-flex align-items-center">

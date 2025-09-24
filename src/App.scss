@@ -10,9 +10,11 @@ body {
   --purple-alt: #8b5cf6;
   --light-blue: #60a5fa;
   --light-grey: #8b93a1;
+  --light-grey-2: oklch(70.7% 0.022 261.325deg);
   --grey: #6a7282;
   --dark-grey: #374151;
   --orange: #ce9a16;
+  --red: #800A20;
   --light-grey-transparent: rgba(55, 65, 81, 0.3);
   --bs-nav-underline-link-active-color: #ce9a16 !important;
   --header_height: 72px;
@@ -203,11 +205,37 @@ body {
     }
   }
 
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  .form-switch {
+    padding-left: 2.5rem;
+    margin-bottom: 0rem;
+    display: flex;
+    align-items: center;
+    .form-check-input {
+      background-color: transparent;
+      width: 2.5rem;
+      box-shadow: none !important;
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='white'/></svg>");
+
+      &:checked {
+        border-color: var(--light-blue);
+        background-color: transparent;
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%2360a5fa'/></svg>");
+      }
+    }
+    label {
+      padding-left: 0.5rem;
+    }
   }
 
   .search-popup {
@@ -222,8 +250,43 @@ body {
     width: fit-content;
   }
 
-  .mw-4 {
-    max-width: 400px;
+  .mw-200 {
+    min-width: 200px;
+  }
+
+  .btn-group {
+    .btn-check {
+      + .btn {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        padding: 10px 10px;
+        border-color: var(--light-blue);
+
+        svg {
+          width: 16px;
+          height: 16px;
+          path {
+            fill: var(--light-blue);
+          }
+        }
+      }
+      &:checked,
+      &:hover,
+      &:active {
+        + .btn {
+          border-color: var(--light-blue);
+          background-color: var(--light-blue);
+          filter: unset;
+
+          svg {
+            path {
+              fill: var(--white);
+            }
+          }
+        }
+      }
+    }
   }
 
   .btn {
@@ -261,14 +324,16 @@ body {
       font-size: 1.2rem;
     }
 
+&.btn-danger {
+  border-color: var(--red);
+  background-color: var(--red);
+}
+
     &.btn-icon {
       background: transparent !important;
       border: none !important;
       padding: 0px !important;
       outline: none !important;
-      &:active {
-        border-color: transparent !important ;
-      }
     }
 
     &.btn-link {
@@ -504,6 +569,15 @@ body {
         border-color: var(--light);
         color: var(--black);
         box-shadow: var(--box-shadow-light);
+      }
+    }
+    .form-switch {
+      .form-check-input {
+        &:not(:checked) {
+          background-color: transparent;
+          border-color: var(--grey);
+          background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%236a7282'/></svg>");
+        }
       }
     }
 

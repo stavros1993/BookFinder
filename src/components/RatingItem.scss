@@ -1,36 +1,81 @@
-.ratings-page {
-  .ratings-row {
-    .boxed-content {
+body {
+  .ratings-page {
+    .ratings-row {
       .col-img {
-        max-width: 120px;
-        flex: 0 0 auto;
-
-        @media(max-width: 767px) {
-          max-width: 90px;
-        }
-      }
-
-      .book-link {
-        width: 100%;
-        display: block;
-        img.book-img {
-          aspect-ratio: 2 / 3;
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-          display: block;
+        img {
           border-radius: 0.5rem;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
       }
 
-      .date-added {
-       }
+      .rating-grid-item {
+        .boxed-content {
+          .col-img {
+            max-width: 120px;
+            flex: 0 0 auto;
 
-      .btn-delete {
-        position: absolute;
-        top: -10px;
-        right: -15px;
-        background-color: var(--dark-purple);
+            @media (max-width: 767px) {
+              max-width: 90px;
+            }
+          }
+
+          .book-link {
+            width: 100%;
+            display: block;
+            img.book-img {
+              aspect-ratio: 2 / 3;
+              width: 100%;
+              height: auto;
+              object-fit: cover;
+              display: block;
+            }
+          }
+
+          .date-added {
+          }
+
+          .btn-delete {
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            background-color: var(--dark-purple);
+          }
+        }
+      }
+      .rating-list-item {
+        overflow: hidden; // prevent it from leaking scrollbars to body
+
+        .boxed-content {
+          .col-img {
+            max-width: 120px;
+            flex: 0 0 120px;
+            @media (max-width: 767px) {
+              max-width: 80px;
+              flex: 0 0 80px;
+            }
+
+            > .book-link {
+              > img {
+                width: 100%;
+                height: auto;
+              }
+            }
+          }
+
+          .date-added {
+            color: var(--light-grey-2);
+          }
+        }
+      }
+    }
+  }
+
+  &.light-mode {
+    .ratings-page {
+      .rating-list-item {
+        .date-added {
+          color: var(--grey) !important;
+        }
       }
     }
   }
