@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import StarRating from "./starRating";
 import { useBooks } from "./contexts/BooksProvider";
-import DeleteButton from "./ui/DeleteButton";
 import "./RatingItem.scss";
 
 function RatingListItem({ item }) {

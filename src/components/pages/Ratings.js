@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocalStorageState } from "../useLocalStorageState";
 import { useBooks } from "../contexts/BooksProvider";
 import RatingListItem from "../RatingListItem";
