@@ -1,0 +1,14 @@
+.hero {
+  @media (min-width: 992px) {
+    padding: 3rem 0 !important;
+  }
+  .hero-img-wrapper {
+    > svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    img {
+    }
+  }
+}

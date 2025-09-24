@@ -1,0 +1,131 @@
+body {
+  padding-top: var(--header_height);
+  .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    background-color: var(--bs-body-bg);
+
+    .container {
+      padding-block: 16px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        left: calc(var(--bs-gutter-x) * 0.5);
+        right: calc(var(--bs-gutter-x) * 0.5);
+        height: 2px;
+        background-color: var(--light-grey-transparent);
+        bottom: 0;
+      }
+    }
+
+    .logo-wrapper {
+      font-size: 20px;
+      > svg {
+        height: 35px;
+        width: auto;
+        margin-right: 0.25rem;
+      }
+    }
+
+    button.search-btn {
+      display: flex;
+      align-items: center;
+      position: relative;
+      border: 2px solid var(--grey);
+      border-radius: 8px;
+      padding-left: 35px;
+      outline: none !important;
+      height: 40px;
+      width: 300px;
+      background-color: transparent;
+      @media (max-width: 991px) {
+        width: 180px;
+      }
+      @media (max-width: 767px) {
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        border: none;
+
+        > svg {
+          position: relative !important;
+          inset: unset !important;
+          transform: none !important;
+          height: 24px !important;
+        }
+        span {
+          display: none;
+        }
+      }
+
+      span {
+        color: var(--grey);
+      }
+      > svg {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 20px;
+        width: auto;
+        path {
+          fill: var(--grey);
+        }
+      }
+    }
+
+    nav {
+      .btn-theme-toggle {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 5px 20px;
+        background-color: var(--blue);
+        border-color: var(--blue);
+        padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+
+        &:hover,
+        &.btn-theme-toggle-light {
+          background-color: var(--white);
+          svg path {
+            fill: var(--black);
+          }
+        }
+
+        > svg {
+          path {
+            fill: var(--white);
+          }
+        }
+      }
+    }
+  }
+  &.light-mode {
+    header {
+      background-color: var(--white);
+    }
+    button.search-btn {
+      border-color: var(--light);
+      span {
+        color: var(--grey);
+      }
+
+      > svg {
+        path {
+          fill: var(--grey);
+        }
+      }
+    }
+  }
+
+  &.menu-open {
+    .burger-menu {
+      path {
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+.top-books-section {
+  /*min-height: 200px;*/
+  .nav-item {
+    position: relative;
+    &:not(:last-child) {
+      &::before {
+        content: "";
+        position: absolute;
+        right: -10px;
+        height: 100%;
+        width: 1px;
+        background-color: var(--light-grey);
+      }
+    }
+    .nav-link {
+      outline: none !important;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      &:hover,
+      &:active,
+      &:focus,
+      &.active {
+        color: var(--orange);
+      }
+    }
+  }
+
+  .top-books-swiper-wrapper {
+    min-height: 170px;
+    .top-books-swiper {
+      .swiper-button-prev,
+      .swiper-button-next {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--purple);
+  
+        svg {
+          height: 25px;
+          width: auto;
+          path {
+            fill:var(--white)
+          }
+        }
+      }
+  
+      .img-wrapper {
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid rgba(246, 243, 244, 0.2);
+        position: relative;
+        img {
+          user-select: none;
+          aspect-ratio: 2/3;
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          display: block;
+        }
+  
+        .btn-buy {
+          position: absolute;
+          z-index: 5;
+          left: 50%;
+          transform: translateX(-50%);
+          white-space: nowrap;
+          bottom: 0rem;
+          pointer-events: none;
+          opacity: 0;
+          visibility: hidden;
+         }
+  
+        &:hover {
+          .btn-buy {
+            bottom: 1rem;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+          }
+        }
+      }
+      
+    }
+  }
+
+}

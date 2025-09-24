@@ -1,0 +1,113 @@
+body {
+  .modal-dialog {
+    .modal-content {
+      border: 1px solid rgba(223, 223, 223, 0.5);
+      .modal-header {
+        display: block;
+        border: none;
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+
+  &.light-mode {
+    .modal-content {
+      background: white;
+    }
+  }
+
+  .search-popup {
+    .modal-dialog {
+      .modal-content {
+        .modal-header {
+          .search-input-wrapper {
+            position: relative;
+            width: 100%;
+
+            button.close-btn {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              right: 10px;
+              background-color: transparent;
+              border: none;
+              border-radius: 5px;
+              background: oklch(37.3% 0.034 259.733);
+              font-size: 14px;
+              letter-spacing: 0.5px;
+              font-family: var(--font-semibold);
+            }
+
+            svg {
+              position: absolute;
+              left: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 25px;
+              height: auto;
+              path {
+                fill: var(--grey);
+              }
+            }
+            input {
+              position: relative;
+              border: 2px solid var(--grey);
+              border-radius: 8px;
+              width: 100%;
+              background-color: transparent;
+              padding: 15px 60px 15px 45px;
+              color: var(--white);
+              font-size: 1.3rem;
+              height: auto;
+              @media (max-width: 767px) {
+                font-size: 1rem;
+              }
+              @media (max-width: 575px) {
+                padding-block:10px
+              }
+            }
+          }
+        }
+
+        .modal-body {
+          padding-inline: 0px;
+
+          .nav {
+            border-bottom: 1px solid var(--grey);
+            .nav-link {
+              padding: 0 1rem 0.5rem;
+              color: var(--light-grey);
+              &:hover,
+              &:active,
+              &.active {
+                color: var(--white) !important;
+              }
+            }
+          }
+
+          .spinner {
+            width: 5rem;
+            height: 5rem;
+          }
+        }
+      }
+    }
+  }
+  &.light-mode {
+    .search-popup {
+      .modal-dialog {
+        .modal-content {
+          .search-input-wrapper {
+            input {
+              color: var(--black);
+            }
+
+            button.close-btn {
+              background-color: var(--light);
+            }
+          }
+        }
+      }
+    }
+  }
+}

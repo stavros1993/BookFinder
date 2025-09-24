@@ -1,0 +1,37 @@
+.ratings-page {
+  .ratings-row {
+    .boxed-content {
+      .col-img {
+        max-width: 120px;
+        flex: 0 0 auto;
+
+        @media(max-width: 767px) {
+          max-width: 90px;
+        }
+      }
+
+      .book-link {
+        width: 100%;
+        display: block;
+        img.book-img {
+          aspect-ratio: 2 / 3;
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          display: block;
+          border-radius: 0.5rem;
+        }
+      }
+
+      .date-added {
+       }
+
+      .btn-delete {
+        position: absolute;
+        top: -10px;
+        right: -15px;
+        background-color: var(--dark-purple);
+      }
+    }
+  }
+}
