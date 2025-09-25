@@ -17,9 +17,7 @@ function BooksProvider({ children }) {
       authors: book.volumeInfo.authors
         ? book.volumeInfo.authors.join(", ")
         : "",
-      genres: book.volumeInfo.categories
-        ? book.volumeInfo.categories.join(", ")
-        : "",
+      genres: book.volumeInfo.categories ? book.volumeInfo.categories : "",
       image: book.volumeInfo.imageLinks.thumbnail,
       year: book.volumeInfo.publishedDate?.match(/^\d{4}/)[0],
       rating: book.volumeInfo.averageRating,
@@ -27,16 +25,20 @@ function BooksProvider({ children }) {
         ? book.volumeInfo.ratingsCount
         : "",
       pages: book.volumeInfo.pageCount,
-      dateAdded: new Date().toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
+      dateAdded: new Date().toLocaleDateString("en-GB"),
       price:
         book.saleInfo.listPrice?.amount != null
           ? book.saleInfo.listPrice.amount
           : null,
       storeLink: book.volumeInfo.canonicalVolumeLink,
+      publishedDate: new Date(book.volumeInfo.publishedDate).toLocaleDateString(
+        "en-US",
+        {
+          month: "2-digit",
+          day: "2-digit",
+          year: "numeric",
+        }
+      ),
     };
 
     const storedWishlist =

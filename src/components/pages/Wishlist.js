@@ -44,8 +44,6 @@ function Wishlist() {
       //   })
       // }
 
- 
-
       switch (sortBy) {
         case "priceAsc":
           filteredResults = filteredResults
@@ -120,7 +118,8 @@ function Wishlist() {
                 <Form>
                   <div className="row align-items-center">
                     <div className="ms-lg-auto col-sm-auto align-self-center pb-3 pb-sm-0">
-                      <Form.Check className="cursor-pointer"
+                      <Form.Check
+                        className="cursor-pointer"
                         onClick={() => setShowOnlyAvailable((prev) => !prev)}
                         type="switch"
                         id="custom-switch"
@@ -223,28 +222,10 @@ function Wishlist() {
             No results found for "{searchQuery}" — try clearing your search
           </h5>
         ) : (
-          <div class="table-responsive">
-            <table class="table wishlist-table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Cover</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Author</th>
-                  {/* <th scope="col">Genre</th> */}
-                  <th scope="col">Avg Rating</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Date Added</th>
-                  <th></th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {wishlistFilteredData.map(function (item, index) {
-                  return <WishlistItem item={item} index={index} />;
-                })}
-              </tbody>
-            </table>
+          <div className="container-sm">
+            {wishlistFilteredData.map(function (item, index) {
+              return <WishlistItem item={item} index={index} />;
+            })}
           </div>
         )}
       </div>

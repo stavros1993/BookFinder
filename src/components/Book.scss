@@ -52,28 +52,7 @@ body {
       }
     }
 
-    .genre-list {
-      padding-top: 1rem;
-      font-size: 14px;
 
-      span {
-        background: rgba(139, 92, 246, 0.1);
-        color: var(--light-purple);
-        border: 1px solid rgba(139, 92, 246, 0.2);
-        padding: 0.4rem 0.8rem;
-        border-radius: 20px;
-        font-family: var(--font-semibold);
-        display: inline-block;
-        margin: 0 0.5rem 0.5rem 0;
-        user-select: none;
-
-        @media (max-width: 575px) {
-          font-size: 12px;
-          padding: 0.2rem 0.5rem;
-          margin: 0 0.4rem 0.4rem 0;
-        }
-      }
-    }
     .star-rating-wrapper {
       display: inline-block;
       svg {
