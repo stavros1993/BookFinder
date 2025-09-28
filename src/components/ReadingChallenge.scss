@@ -24,21 +24,7 @@ body {
         }
       }
     }
-    .progress-bar-wrapper {
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      padding: 5px;
-      border: 1px solid var(--dark-grey);
-      border-radius: 25rem;
 
-      .progress {
-        border-radius: 25rem;
-        .progress-bar {
-          overflow: hidden;
-          background-color: transparent;
-          background-color: var(--purple);
-        }
-      }
-    }
   }
   &.light-mode {
     .reading-challenge {

@@ -11,14 +11,13 @@ import GridView from "../icons/GridView";
 import { ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 
 function Ratings() {
-  const { ratedBooks } = useBooks();
+  const { ratedBooks, removeFromRatedBooks } = useBooks();
   const [view, setView] =  useLocalStorageState("grid", "view-type");
 
   useEffect(function () {
     document.title = "My Ratings | BookFinder";
   }, []);
 
-  const { removeFromRatedBooks } = useBooks();
 
   if (ratedBooks.length === 0) {
     return (

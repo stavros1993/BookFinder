@@ -7,35 +7,89 @@ function BooksProvider({ children }) {
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [wishlist, setWishlist] = useLocalStorageState([], "my_wishlist");
   const [ratedBooks, setRatedBooks] = useLocalStorageState([], "ratedBooks");
+  const [library, setLibrary] = useLocalStorageState([], "library");
   const [bookToDelete, setBookToDelete] = useState({});
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  function addToWishlist(book) {
+  function createBook(book) {
     const newBook = {
       id: book.id,
       title: book.volumeInfo.title,
       authors: book.volumeInfo.authors
         ? book.volumeInfo.authors.join(", ")
         : "",
-      genres: book.volumeInfo.categories ? book.volumeInfo.categories : "",
       image: book.volumeInfo.imageLinks.thumbnail,
-      year: book.volumeInfo.publishedDate?.match(/^\d{4}/)[0],
-      rating: book.volumeInfo.averageRating,
-      ratingCount: book.volumeInfo.ratingsCount
-        ? book.volumeInfo.ratingsCount
-        : "",
-      pages: book.volumeInfo.pageCount,
-      dateAdded: new Date().toLocaleDateString("en-GB"),
-      price:
-        book.saleInfo.listPrice?.amount != null
-          ? book.saleInfo.listPrice.amount
-          : null,
-      storeLink: book.volumeInfo.canonicalVolumeLink,
+      dateAdded: new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }),
+    };
+    return newBook;
+  }
+
+  function addToLibrary(
+    book,
+    status,
+    hasBeenAddedToLibrary = null,
+    existingLibraryItem = null
+  ) {
+    console.log(existingLibraryItem);
+
+    if (hasBeenAddedToLibrary === true) {
+      if (status !== existingLibraryItem.status) {
+        setLibrary(
+          library.map(function (item) {
+            if (item.id === book.id) {
+              return { ...item, status: status };
+            } else {
+              return item;
+            }
+          })
+        );
+      } else {
+        alert("change needed");
+        return;
+      }
+    } else {
+      const newBook = {
+        ...createBook(book),
+        pages: book.volumeInfo.pageCount ?? null,
+        currentPage: status === "read" ? book.volumeInfo.pageCount : 0,
+        userRating: null,
+        status: status,
+      };
+
+      const storedLibrary = JSON.parse(localStorage.getItem("library")) || [];
+      const updatedLibrary = [...storedLibrary, newBook];
+      setLibrary(updatedLibrary);
+      localStorage.setItem("library", JSON.stringify(updatedLibrary));
+
+      if (wishlist.some((cur) => cur.id === book.id)) {
+        removeFromWishlist(book.id);
+      }
+    }
+  }
+
+  const readingStatusLabels = {
+    read: "Read",
+    currentlyReading: "Currently Reading",
+  };
+
+  function addToWishlist(book) {
+    const newBook = {
+      ...createBook(book),
+      genres: book.volumeInfo.categories ?? null,
+      rating: book.volumeInfo.averageRating ?? null,
+      ratingCount: book.volumeInfo.ratingsCount ?? null,
+      page: book.volumeInfo.pageCount ?? null,
+      price: book.saleInfo.listPrice?.amount ?? null,
+      storeLink: book.volumeInfo.canonicalVolumeLink ?? null,
       publishedDate: new Date(book.volumeInfo.publishedDate).toLocaleDateString(
         "en-US",
         {
-          month: "2-digit",
-          day: "2-digit",
+          month: "short",
+          day: "numeric",
           year: "numeric",
         }
       ),
@@ -48,31 +102,10 @@ function BooksProvider({ children }) {
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   }
 
-  function removeFromWishlist(id) {
-    if (wishlist && Array.isArray(wishlist)) {
-      setWishlist((prev) => prev.filter((prev) => id !== prev.id));
-    }
-  }
-
-  function checkHasBeenAddedToWishlist(id) {
-    if (!Array.isArray(wishlist)) return;
-    return wishlist.map((cur) => cur.id).includes(id);
-  }
-
   function addToRatedBooks(book, rating) {
     const newBook = {
-      id: book.id,
-      title: book.volumeInfo.title,
-      authors: book.volumeInfo.authors
-        ? book.volumeInfo.authors.join(", ")
-        : "",
-      image: book.volumeInfo?.imageLinks?.thumbnail,
-      userRating: Number(rating) || "not set",
-      dateAdded: new Date().toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
+      ...createBook(book),
+      userRating: Number(rating),
     };
 
     const storedRatedBooks =
@@ -81,6 +114,25 @@ function BooksProvider({ children }) {
 
     setRatedBooks(updatedRatedBooks);
     localStorage.setItem("ratedBooks", JSON.stringify(updatedRatedBooks));
+  }
+
+  function removeFromWishlist(id) {
+    if (wishlist && Array.isArray(wishlist)) {
+      setWishlist((prev) => prev.filter((prev) => id !== prev.id));
+    }
+  }
+
+  function removeFromLibrary(id) {
+    if (library && Array.isArray(library)) {
+      setLibrary((prev) => prev.filter((prev) => id !== prev.id));
+    }
+  }
+
+  function checkHasBeenAddedToLibrary(id) {
+    if (!Array.isArray(library)) {
+      return;
+    }
+    return library.map((cur) => cur.id).includes(id);
   }
 
   function editRatedBook(id, rating) {
@@ -118,18 +170,23 @@ function BooksProvider({ children }) {
         setWishlist,
         ratedBooks,
         setRatedBooks,
+        library,
+        setLibrary,
         addToWishlist,
         removeFromWishlist,
         addToRatedBooks,
         editRatedBook,
         removeFromRatedBooks,
         getRatedBook,
-        checkHasBeenAddedToWishlist,
         bookToDelete,
         setBookToDelete,
         showDeleteModal,
         setShowDeleteModal,
         prepareDelete,
+        addToLibrary,
+        removeFromLibrary,
+        checkHasBeenAddedToLibrary,
+        readingStatusLabels,
       }}
     >
       {children}

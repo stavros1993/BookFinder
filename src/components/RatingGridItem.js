@@ -42,6 +42,8 @@ function RatingGridItem({ item }) {
           </div>
         </div>
         <DeleteButton onClick={() => prepareDelete(item.id, item.title)} />
+
+       
       </div>
     </div>
   );

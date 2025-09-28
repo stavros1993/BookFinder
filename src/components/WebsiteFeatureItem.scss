@@ -1,0 +1,38 @@
+body {
+  .col-website-feature {
+    .boxed-content {
+      height: 100%;
+      svg {
+        height: 25px;
+        width: auto;
+        path {
+          fill: var(--dark-grey);
+          stroke: var(--dark-grey);
+        }
+
+        rect {
+          fill: var(--dark-grey);
+          stroke: var(--dark-grey);
+        }
+      }
+    }
+  }
+
+  &.light-mode {
+    .col-website-feature {
+      .boxed-content {
+        svg {
+          path {
+            fill: var(--light);
+            stroke: var(--light);
+          }
+
+          rect {
+            fill: var(--light);
+            stroke: var(--light);
+          }
+        }
+      }
+    }
+  }
+}

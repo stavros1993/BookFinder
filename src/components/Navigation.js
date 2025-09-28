@@ -7,10 +7,13 @@ function Navigation({ setDarkMode, darkMode }) {
       <nav className="ms-lg-3 d-flex align-items-center">
         <div className="d-none d-md-block">
           <NavLink className="btn btn-default me-3" to="/wishlist">
-            My Wishlist
+            Wishlist
           </NavLink>
           <NavLink className="btn btn-default me-3" to="/ratings">
-            My Ratings
+            Ratings
+          </NavLink>
+          <NavLink className="btn btn-default me-3" to="/library">
+            Library
           </NavLink>
         </div>
         <button

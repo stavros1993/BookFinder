@@ -4,10 +4,13 @@ import Star from "./icons/Star";
 import "./BookSearchResultItem.scss";
 
 function BookSearchResultItem({ item, setShowSearchModal, setSearchQuery }) {
-  const { addToWishlist, removeFromWishlist, checkHasBeenAddedToWishlist } =
-    useBooks();
+  const {
+    addToWishlist,
+    wishlist,
+    removeFromWishlist
+  } = useBooks();
 
-  const hasBeenAddedToWishlist = checkHasBeenAddedToWishlist(item.id);
+  const hasBeenAddedToWishlist = wishlist.some((cur) => cur.id === item.id);
 
   return (
     <div className="book-item">

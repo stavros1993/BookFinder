@@ -2,6 +2,7 @@ body {
   --bs-body-bg: #1f2937 !important;
   --white: #ffffff;
   --dark-blue: #223147;
+  --dark-blue-gray: #283346;
   --black: #1a1a1a;
   --light: #d1d5db;
   --purple: #43359be0;
@@ -13,8 +14,10 @@ body {
   --light-grey-2: oklch(70.7% 0.022 261.325deg);
   --grey: #6a7282;
   --dark-grey: #374151;
+  --dark-grey-2: oklch(37.3% 0.034 259.733);
   --orange: #ce9a16;
   --red: #800a20;
+  --color-green-500: oklch(72.3% 0.219 149.579);
   --light-grey-transparent: rgba(55, 65, 81, 0.3);
   --bs-nav-underline-link-active-color: #ce9a16 !important;
   --header_height: 72px;
@@ -54,6 +57,10 @@ body {
         padding-top: 0rem;
       }
     }
+  }
+
+  .bg-green-500 {
+    background-color: oklch(72.3% 0.219 149.579);
   }
 
   * {
@@ -166,22 +173,21 @@ body {
   h1,
   .h1 {
     font-size: 2.5rem !important;
-    @media(max-width:767px) {
-
+    @media (max-width: 767px) {
     }
   }
 
   h2,
   .h2 {
     font-size: 2rem !important;
-    @media(max-width:767px) {
+    @media (max-width: 767px) {
       font-size: 1.8rem !important;
     }
   }
   h3,
   .h3 {
     font-size: 1.8rem !important;
-    @media(max-width:767px) {
+    @media (max-width: 767px) {
       font-size: 1.5rem !important;
     }
   }
@@ -189,25 +195,22 @@ body {
   h4,
   .h4 {
     font-size: 1.5rem !important;
-    @media(max-width:767px) {
-      font-size: 1.25rem !important;
+    @media (max-width: 767px) {
+      font-size: 1.3rem !important;
     }
   }
 
   h5,
   .h5 {
     font-size: 1.25rem !important;
-    @media(max-width:767px) {
-      font-size: 1rem !important;
+    @media (max-width: 767px) {
+      font-size: 1.15rem !important;
     }
   }
 
   h6,
   .h6 {
     font-size: 1rem !important;
-    @media(max-width:767px) {
-      font-size: .8rem !important;
-    }
   }
   input {
     position: relative;
@@ -311,6 +314,13 @@ body {
     line-height: 1.2;
     padding: 10px 15px;
     font-family: var(--font-semibold);
+    svg {
+      width: 20px;
+      height: auto;
+      polygon {
+        fill: var(--white);
+      }
+    }
 
     &:hover,
     &:active,
@@ -326,6 +336,11 @@ body {
       box-shadow: 0 4px 15px rgba(34, 49, 71, 0.4);
     }
 
+    &.btn-nav {
+      background-color: var(--dark-blue-gray);
+      color: var(--white);
+    }
+
     &.btn-buy {
       background-color: var(--purple);
       color: var(--white);
@@ -335,6 +350,12 @@ body {
     &.btn-blue {
       background-color: var(--light-blue);
       border-color: var(--light-blue);
+    }
+
+    &.btn-small {
+      padding: 7px 10px;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
     }
 
     &.btn-large {
@@ -352,6 +373,10 @@ body {
       border: none !important;
       padding: 0px !important;
       outline: none !important;
+    }
+
+    &.btn-rounded {
+      border-radius: 1.5rem !important;
     }
 
     &.btn-link {
@@ -429,7 +454,7 @@ body {
     }
   }
   .dropdown-menu {
-    font-size: 14px;
+    font-size: 16px;
     border: 2px solid var(--light-grey-transparent);
     box-shadow: 0 4px 15px rgba(34, 49, 71, 0.4);
 
@@ -492,8 +517,16 @@ body {
     }
   }
 
+  .font-14 {
+    font-size: 14px !important;
+  }
+
   .font-18 {
-    font-size: 18px;
+    font-size: 18px !important;
+  }
+
+  .font-20 {
+    font-size: 20px !important;
   }
 
   .font-small {
@@ -559,6 +592,10 @@ body {
     }
   }
 
+  .pointer-events-none {
+    pointer-events: none;
+  }
+
   .mh-28 {
     min-height: 28px;
   }
@@ -567,8 +604,31 @@ body {
     color: var(--black);
     background-color: var(--white) !important;
 
+    .shadowed {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
     * {
       color: var(--black);
+    }
+
+    .btn-group {
+      .btn-check {
+        &:checked,
+        &:hover {
+          + .btn {
+            color: var(--white) ;
+          }
+        }
+
+        + .btn {
+          &:hover,
+          &:active {
+            background-color: var(--light-blue);
+            color: var(--white) ;
+          }
+        }
+      }
     }
 
     .btn {
@@ -578,6 +638,10 @@ body {
       &:focus,
       &.active {
         filter: brightness(90%);
+      }
+
+      &.btn-nav {
+        color: var(--light-blue);
       }
 
       &.btn-default {
@@ -616,6 +680,7 @@ body {
     .boxed-content {
       border-color: var(--light);
       box-shadow: var(--box-shadow-light);
+      background-color: transparent !important;
     }
 
     .dropdown-menu {
@@ -626,6 +691,12 @@ body {
         &:hover {
           color: var(--grey);
         }
+      }
+    }
+
+    .search-wrapper {
+      .input-search {
+        border-color: var(--light);
       }
     }
   }
@@ -651,5 +722,73 @@ body {
         margin: 0 0.4rem 0.4rem 0;
       }
     }
+  }
+  .search-wrapper {
+    position: relative;
+    .input-search {
+      display: flex;
+      align-items: center;
+      position: relative;
+      border: 2px solid var(--grey);
+      border-radius: 8px;
+      padding: 7px 35px 7px 10px;
+      outline: none !important;
+      width: 300px;
+      background-color: transparent;
+      height: auto;
+
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+    > svg,
+    > .cancel-search-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      background: transparent !important;
+      border: none !important;
+      padding: 0px !important;
+      outline: none !important;
+      &:active {
+        border-color: transparent !important ;
+      }
+      path {
+        fill: var(--grey);
+      }
+    }
+    .cancel-search-btn {
+      > svg {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  .progress-bar-wrapper {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border: 1px solid var(--dark-grey);
+    border-radius: 25rem;
+  }
+
+  .progress {
+    border-radius: 25rem;
+    .progress-bar {
+      overflow: hidden;
+      background-color: transparent;
+      background-color: var(--purple);
+    }
+  }
+
+  .shadowed {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
 }

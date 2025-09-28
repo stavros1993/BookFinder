@@ -38,11 +38,6 @@ function Wishlist() {
           return item.price;
         });
       }
-      // else {
-      //   filteredResults = wishlist.filter(function (item) {
-      //     return item.price;
-      //   })
-      // }
 
       switch (sortBy) {
         case "priceAsc":
@@ -190,9 +185,9 @@ function Wishlist() {
                     </div>
 
                     <div className=" col-md col-lg-auto pt-3 pt-md-0">
-                      <div className="search-wishlist-wrapper w-100">
+                      <div className="search-wrapper w-100">
                         <input
-                          className="search-wishlist w-100"
+                          className="input-search w-100"
                           value={searchQuery}
                           onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search title of author..."
@@ -215,14 +210,10 @@ function Wishlist() {
             </>
           )}
         </div>
-        {wishlist.length > 0 &&
-        wishlistFilteredData.length === 0 &&
-        searchQuery.length > 0 ? (
-          <h5>
-            No results found for "{searchQuery}" — try clearing your search
-          </h5>
+        {wishlist.length > 0 && wishlistFilteredData.length === 0 ? (
+          <h5>No matching results</h5>
         ) : (
-          <div className="container-sm">
+          <div>
             {wishlistFilteredData.map(function (item, index) {
               return <WishlistItem item={item} index={index} />;
             })}

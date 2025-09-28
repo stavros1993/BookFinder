@@ -10,7 +10,9 @@ function WishlistItem({ item, index }) {
     <div className="wishlist-item boxed-content">
       <div className="row gx-3 gx-sm-4">
         <div className="col col-number">
-          <div className="h-100 d-flex align-items-end justify-content-center">{index + 1}</div>
+          <div className="h-100 d-flex align-items-end justify-content-center">
+            {index + 1}
+          </div>
         </div>
 
         <div className="col col-img">
@@ -36,7 +38,7 @@ function WishlistItem({ item, index }) {
                 <div className="row font-small gx-3 gx-sm-4 ls-1">
                   <div className="d-none d-md-block col-md-6">REVIEWS:</div>
                   <div className="col-auto col-md-6">
-                    {typeof item.rating !== "undefined" ? (
+                    {typeof item.rating !== "undefined" && item.rating!=null  ? (
                       <>
                         <span className="me-1">{item.rating}</span>
                         <Star color="#fbbf24" stroke="#fbbf24" size="15px" />
@@ -46,7 +48,7 @@ function WishlistItem({ item, index }) {
                     )}
                   </div>
                   <div className="col-6 d-none d-md-block">
-                    PUBLICATION DATE:{" "}
+                    PUBLICATION DATE:
                   </div>
                   <div className="col-auto col-md-6">
                     {item.publishedDate && item.publishedDate}
@@ -72,7 +74,7 @@ function WishlistItem({ item, index }) {
             <div className="row bottom-row mt-auto font-small pt-3 pt-sm-2">
               <div className="col d-none d-md-block">
                 <div className="genre-list pt-0 ">
-                  {item?.genres.slice(0, 1).map((category, index) => (
+                  {item?.genres?.slice(0, 1).map((category, index) => (
                     <span className="mb-0" key={index}>
                       {category.substring(0)}
                     </span>
@@ -81,7 +83,14 @@ function WishlistItem({ item, index }) {
               </div>
               <div className="ms-sm-auto col-auto align-self-end">
                 <div className="d-flex align-items-center">
-                  <span>Added on {item.dateAdded}</span>
+                  <span>
+                    Added on{" "}
+                    {new Date(item.dateAdded).toLocaleDateString("en-US", {
+                      month: "2-digit",
+                      day: "2-digit",
+                      year: "numeric",
+                    })}
+                  </span>
                   <button
                     className="btn btn-link font-small ms-1"
                     onClick={() => prepareDelete(item.id, item.title)}

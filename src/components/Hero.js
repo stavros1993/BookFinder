@@ -14,8 +14,8 @@ function Hero() {
             <h1>Book smart with BookFinder</h1>
             <p className="font-18">
               Discover and collect books with ease — add titles to your
-              Wishlist, purchase them directly from the external store, or rate
-              the ones you’ve read.
+              Wishlist, purchase them directly from the external store, rate
+              the ones you’ve read or add them to your library.
             </p>
             <OpenSearchModalButton />
           </div>

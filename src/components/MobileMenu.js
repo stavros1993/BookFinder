@@ -2,8 +2,9 @@ import { NavLink } from "react-router-dom";
 import { useBooks } from "./contexts/BooksProvider";
 import Home from "./icons/Home";
 import Search from "./icons/Search";
-import Library from "./icons/Library";
+import Bookmark from "./icons/Bookmark";
 import Star from "./icons/Star";
+import Book from "./icons/Book";
 import "./MobileMenu.scss";
 
 function MobileMenu() {
@@ -20,8 +21,12 @@ function MobileMenu() {
           <span className="d-block pt-2">Search</span>
         </button>
         <NavLink to="/wishlist">
-          <Library />
+          <Bookmark />
           <span className="d-block pt-2">Wishlist</span>
+        </NavLink>
+        <NavLink to="/library">
+          <Book />
+          <span className="d-block pt-2">Library</span>
         </NavLink>
         <NavLink to="/ratings">
           <Star />

@@ -5,17 +5,42 @@ import Spinner from "./ui/Spinner";
 import StarRating from "./starRating";
 import Star from "./icons/Star";
 import "./Book.scss";
+import Dropdown from "react-bootstrap/Dropdown";
+import AddToLibraryPopup from "./AddToLibraryPopup";
+import Checkmark from "./icons/Checkmark";
 
 function Book() {
   const BASE_URL = "https://www.googleapis.com/books/v1/volumes/";
   const { id } = useParams();
 
-  const { addToWishlist, removeFromWishlist, checkHasBeenAddedToWishlist } =
-    useBooks();
+  const {
+    addToWishlist,
+    removeFromWishlist,
+    addToLibrary,
+    wishlist,
+    library,
+    readingStatusLabels,
+  } = useBooks();
 
   const [isLoading, setIsLoading] = useState(true);
   const [bookDetails, setBookDetails] = useState(null);
-  const hasBeenAddedToWishlist = checkHasBeenAddedToWishlist(id);
+  const [showAddToLibraryModal, setShowAddToLibraryModal] = useState(false);
+
+  const hasBeenAddedToWishlist = wishlist.some(
+    (cur) => cur.id === bookDetails?.id
+  );
+  /* */
+  const hasBeenAddedToLibrary = library.some(function (item) {
+    return item.id === bookDetails?.id;
+  });
+
+  let existingLibraryItem;
+
+  if (hasBeenAddedToLibrary) {
+    existingLibraryItem = library.find(function (item) {
+      return item.id === bookDetails.id;
+    });
+  }
 
   useEffect(() => {
     async function fetchResults() {
@@ -38,7 +63,7 @@ function Book() {
     function () {
       if (!bookDetails) return;
       document.title = `${
-        bookDetails.volumeInfo.title
+        bookDetails?.volumeInfo?.title
           ? bookDetails.volumeInfo.title
           : "Book Details"
       } | BookFinder`;
@@ -52,7 +77,13 @@ function Book() {
 
   return (
     <section className="book-details">
-      {/* {watchedUserRating + "|"} */}
+      <AddToLibraryPopup
+        bookDetails={bookDetails}
+        show={showAddToLibraryModal}
+        setShow={setShowAddToLibraryModal}
+        hasBeenAddedToLibrary={hasBeenAddedToLibrary}
+        existingLibraryItem={existingLibraryItem}
+      />
 
       <div className="container-sm">
         {isLoading && <Spinner />}
@@ -60,8 +91,8 @@ function Book() {
 
         {bookDetails?.volumeInfo && (
           <div className="row">
-            <div className="col-sm-auto pb-3 pb-sm-0">
-              <div className="d-flex ">
+            <div className="col-sm-auto pb-3 pb-lg-0">
+              <div className="d-flex h-100 h-md-auto align-items-center align-items-md-start">
                 <img
                   alt={bookDetails.title}
                   className="rounded main-image d-block"
@@ -147,25 +178,25 @@ function Book() {
                   </div>
                 </div>
 
-                <div className="d-sm-flex align-items-center buttons-row">
+                <div className="d-md-flex align-items-center buttons-row">
                   <a
                     rel="noreferrer"
                     target="_blank"
                     href={bookDetails.volumeInfo.canonicalVolumeLink}
-                    className="btn btn-buy mb-3 mb-sm-0"
+                    className="btn btn-buy mb-3 mb-md-0"
                   >
                     Buy on Google Play
                   </a>
                   {hasBeenAddedToWishlist ? (
                     <button
-                      className="btn btn-default"
+                      className="btn btn-default  mb-3 mb-md-0"
                       onClick={() => removeFromWishlist(bookDetails.id)}
                     >
                       Remove from Wishlist
                     </button>
                   ) : (
                     <button
-                      className=" btn btn-default"
+                      className=" btn btn-default  mb-3 mb-md-0"
                       onClick={() => {
                         addToWishlist(bookDetails);
                       }}
@@ -173,6 +204,46 @@ function Book() {
                       Add to Wishlist
                     </button>
                   )}
+                  <button
+                    className="btn btn-default"
+                    onClick={() => setShowAddToLibraryModal(true)}
+                  >
+                    {existingLibraryItem?.status ? (
+                      <span className="d-flex align-items-center justify-content-center">
+                        <span className="me-1">
+                          <Checkmark />
+                        </span>
+                        {readingStatusLabels[existingLibraryItem.status]}
+                      </span>
+                    ) : (
+                      "Add To Library"
+                    )}
+                  </button>
+
+                  {/* <Dropdown>
+                    <Dropdown.Toggle
+                      className="btn btn-default me-0"
+                      id="dropdown-basic"
+                    >
+                      Add To Library
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu className="w-100">
+                      <Dropdown.Item
+                        onClick={() => addToLibrary(bookDetails, "read")}
+                      >
+                        Read
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        onClick={() =>
+                          addToLibrary(bookDetails, "currentlyReading")
+                        }
+                        href="#/action-2"
+                      >
+                        Currently Reading
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown> */}
                 </div>
               </div>
             </div>
