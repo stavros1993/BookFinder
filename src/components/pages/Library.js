@@ -7,7 +7,7 @@ import DeleteConfirmationPopup from "../DeleteConfirmationPopup";
 import UpdateProgressPopup from "../UpdateProgressPopup";
 
 function Library() {
-  const { library, setLibrary, removeFromLibrary } =
+  const { library, removeFromLibrary } =
     useBooks();
   const [libraryFilteredResults, setLibraryFilteredResults] = useState(library);
   const [searchQuery, setSearchQuery] = useState("");
@@ -69,8 +69,8 @@ function Library() {
             setSearchQuery={setSearchQuery}
           />
 
-          <section className="">
-            {libraryFilteredResults.length == 0 ? (
+          <section>
+            {libraryFilteredResults.length === 0 ? (
               <h5>No matching results</h5>
             ) : (
               <div className="row">

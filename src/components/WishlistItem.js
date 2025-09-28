@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import DeleteButton from "./ui/DeleteButton";
 import Star from "./icons/Star";
 import { useBooks } from "./contexts/BooksProvider";
 import "./WishlistItem.scss";

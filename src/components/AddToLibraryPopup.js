@@ -1,7 +1,5 @@
-import { useRef, useState, useEffect } from "react";
 import { useBooks } from "./contexts/BooksProvider";
 import Modal from "react-bootstrap/Modal";
-import ProgressBar from "react-bootstrap/ProgressBar";
 import Checkmark from "./icons/Checkmark";
 import "./Modals.scss";
 
@@ -17,12 +15,8 @@ function AddToLibraryPopup({
   };
 
   const {
-    addToWishlist,
-    removeFromWishlist,
-    library,
     addToLibrary,
     removeFromLibrary,
-    wishlist,
   } = useBooks();
 
   return (

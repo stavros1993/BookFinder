@@ -8,9 +8,8 @@ function LibraryItem({
   item,
   setShowUpdateProgressPopup,
   setLibraryIdToUpdate,
-  libraryIdToUpdate,
 }) {
-  const { prepareDelete, bookToDelete } = useBooks();
+  const { prepareDelete } = useBooks();
 
   return (
     <div className="col col-library-item pb-4">
@@ -32,9 +31,9 @@ function LibraryItem({
               {item.title}
             </Link>
 
-            <h6 className="">{item.authors}</h6>
+            <h6>{item.authors}</h6>
 
-            {item.status == "read" ? (
+            {item.status === "read" ? (
               <>
                 <ProgressBar now={100} className="mt-auto " />
                 <span className="d-block font-14">Completed</span>

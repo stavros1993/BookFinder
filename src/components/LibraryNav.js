@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-import { useContext, useState } from "react";
 import CloseIcon from "./icons/CloseIcon";
 import Search from "./icons/Search";
 import { ToggleButton, ToggleButtonGroup } from "react-bootstrap";

@@ -5,7 +5,6 @@ import Spinner from "./ui/Spinner";
 import StarRating from "./starRating";
 import Star from "./icons/Star";
 import "./Book.scss";
-import Dropdown from "react-bootstrap/Dropdown";
 import AddToLibraryPopup from "./AddToLibraryPopup";
 import Checkmark from "./icons/Checkmark";
 
@@ -16,7 +15,6 @@ function Book() {
   const {
     addToWishlist,
     removeFromWishlist,
-    addToLibrary,
     wishlist,
     library,
     readingStatusLabels,

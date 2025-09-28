@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useBooks } from "./contexts/BooksProvider";
 import Modal from "react-bootstrap/Modal";
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -91,7 +91,10 @@ function UpdateProgressPopup({
               className="mx-2"
             />
 
-            <button className="text-left d-block d-sm-inline-block btn btn-link ms-sm-auto mt-2 mt-sm-0" onClick={completeBook}>
+            <button
+              className="text-left d-block d-sm-inline-block btn btn-link ms-sm-auto mt-2 mt-sm-0"
+              onClick={completeBook}
+            >
               I'm done!
             </button>
           </div>
