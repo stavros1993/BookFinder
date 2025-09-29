@@ -34,14 +34,13 @@ function BooksProvider({ children }) {
     hasBeenAddedToLibrary = null,
     existingLibraryItem = null
   ) {
-    console.log(existingLibraryItem);
 
     if (hasBeenAddedToLibrary === true) {
       if (status !== existingLibraryItem.status) {
         setLibrary(
           library.map(function (item) {
             if (item.id === book.id) {
-              return { ...item, status: status };
+              return { ...item, status: status, currentPage: status==="currentlyReading" ? 0 : status==="read" ? book.pages : '' };
             } else {
               return item;
             }
