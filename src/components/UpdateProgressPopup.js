@@ -30,22 +30,21 @@ function UpdateProgressPopup({
   function updateProgress() {
     if (currentPageInput < 0 || currentPageInput > currentBook.pages) {
       return;
-    }
-
-     if (currentPageInput === currentBook.pages) {
-        
-      completeBook();
     } else {
-      setLibrary(function (prevLibrary) {
-        return prevLibrary.map(function (item) {
-          if (item.id === currentBook.id) {
-            return { ...item, currentPage: currentPageInput };
-          } else {
-            return item;
-          }
+      if (currentPageInput === currentBook.pages) {
+        completeBook();
+      } else {
+        setLibrary(function (prevLibrary) {
+          return prevLibrary.map(function (item) {
+            if (item.id === currentBook.id) {
+              return { ...item, currentPage: currentPageInput };
+            } else {
+              return item;
+            }
+          });
         });
-      });
-      setShowUpdateProgressPopup(false);
+        setShowUpdateProgressPopup(false);
+      }
     }
   }
 
@@ -93,6 +92,7 @@ function UpdateProgressPopup({
             />
 
             <button
+              type="button"
               className="text-left d-block d-sm-inline-block btn btn-link mx-sm-auto mt-2 mt-sm-0"
               onClick={completeBook}
             >

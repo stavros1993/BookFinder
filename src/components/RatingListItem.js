@@ -12,8 +12,7 @@ function RatingListItem({ item }) {
         <div className="row h-100 gx-3 gx-md-4 align-items-center">
           <div className="col col-img">
             <Link className="book-link" to={`/book/${item.id}`}>
-              {console.log(item)}
-              <img
+               <img
                 alt={item.title}
                 src={item.image ? item.image : "/images/placeholder-image.png"}
                 className="book-img"
