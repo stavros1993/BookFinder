@@ -93,10 +93,10 @@ function UpdateProgressPopup({
             />
 
             <button
-              className="text-left d-block d-sm-inline-block btn btn-link ms-sm-auto mt-2 mt-sm-0"
+              className="text-left d-block d-sm-inline-block btn btn-link mx-sm-auto mt-2 mt-sm-0"
               onClick={completeBook}
             >
-              I'm done!
+              I'm finished!
             </button>
           </div>
 

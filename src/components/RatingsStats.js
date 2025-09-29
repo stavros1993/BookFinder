@@ -16,7 +16,7 @@ function RatingsStats({ ratedBooks }) {
     });
     return curMonthRatings.length;
   }
- 
+
   return (
     <section className="container-md pt-0">
       <div className="boxed-content">
