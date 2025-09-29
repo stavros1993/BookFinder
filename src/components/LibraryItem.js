@@ -36,7 +36,7 @@ function LibraryItem({
             {item.status === "read" ? (
               <>
                 <ProgressBar now={100} className="mt-auto " />
-                <span className="d-block font-14">Completed</span>
+                <span className="d-block font-14 text-start">Completed</span>
               </>
             ) : (
               <>

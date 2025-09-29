@@ -2,13 +2,12 @@ import WebsiteFeatureItem from "./WebsiteFeatureItem";
 import Search from "./icons/Search";
 import Bookmark from "./icons/Bookmark";
 import Star from "./icons/Star";
-import Challenge from "./icons/Challenge";
 import Book from "./icons/Book";
 
 function WebsiteFeatures() {
   return (
     <section className="website-features">
-      <div className="container-md">
+      <div className="container-sm">
         <div className="row justify-content-center gx-3">
           <WebsiteFeatureItem title="Find" Icon={Search}>
             Search for new books and find titles that match your interests and
@@ -24,10 +23,6 @@ function WebsiteFeatures() {
           <WebsiteFeatureItem title="Library" Icon={Book}>
             Add books to your library to keep track of your collection and your
             reading progress.
-          </WebsiteFeatureItem>
-          <WebsiteFeatureItem title="Challenge" Icon={Challenge}>
-            Set the book challenge by choosing how many books you want to finish
-            this year.
           </WebsiteFeatureItem>
         </div>
       </div>

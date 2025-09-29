@@ -17,12 +17,6 @@ function PageNotFound() {
             not lost for good. Let's get you back on track.
           </p>
 
-          {/* <ul>
-            <li>Go back to the homepage</li>
-            <li>Search for a new book using the search bar above.</li>
-            <li>Check out some of our most popular books below.</li> .
-          </ul> */}
-          {/* <BlueButton /> */}
 
           <Link to="/" className="btn btn-bordered btn-large me-3">
             Homepage

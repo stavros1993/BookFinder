@@ -32,7 +32,8 @@ function UpdateProgressPopup({
       return;
     }
 
-    if (currentPageInput === currentBook.pages) {
+     if (currentPageInput === currentBook.pages) {
+        
       completeBook();
     } else {
       setLibrary(function (prevLibrary) {
@@ -80,7 +81,7 @@ function UpdateProgressPopup({
             <input
               type="number"
               value={currentPageInput}
-              onChange={(e) => setCurrentPageInput(e.target.value)}
+              onChange={(e) => setCurrentPageInput(Number(e.target.value))}
               className="mx-2"
             />
             <span>of</span>
