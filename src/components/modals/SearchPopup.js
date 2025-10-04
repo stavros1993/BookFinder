@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import Modal from "react-bootstrap/Modal";
-import { useBooks } from "./contexts/BooksProvider";
-import BookSearchResultItem from "./BookSearchResultItem";
-import Spinner from "./ui/Spinner";
-import Search from "./icons/Search";
+import { useBooks } from "../contexts/BooksProvider";
+import BookSearchResultItem from "../BookSearchResultItem";
+import Spinner from "../ui/Spinner";
+import Search from "../icons/Search";
 import "./Modals.scss";
 
 function SearchPopup() {

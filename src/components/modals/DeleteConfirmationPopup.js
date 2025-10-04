@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useBooks } from "./contexts/BooksProvider";
+import { useBooks } from "../contexts/BooksProvider";
 import Modal from "react-bootstrap/Modal";
 
 function DeleteConfirmationPopup({ removeBook }) {

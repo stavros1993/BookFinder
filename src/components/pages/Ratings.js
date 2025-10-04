@@ -4,7 +4,7 @@ import { useBooks } from "../contexts/BooksProvider";
 import RatingListItem from "../RatingListItem";
 import RatingGridItem from "../RatingGridItem";
 import RatingsStats from "../RatingsStats";
-import DeleteConfirmationPopup from "../DeleteConfirmationPopup";
+import DeleteConfirmationPopup from "../modals/DeleteConfirmationPopup";
 import EmptyPage from "../EmptyPage";
 import ListView from "../icons/ListView";
 import GridView from "../icons/GridView";

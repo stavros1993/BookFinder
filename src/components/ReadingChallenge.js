@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import ReadingChallengePopup from "./ReadingChallengePopup";
+import ReadingChallengePopup from "./modals/ReadingChallengePopup";
 import { useLocalStorageState } from "./useLocalStorageState";
 import "./ReadingChallenge.scss";
 

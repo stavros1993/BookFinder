@@ -81,7 +81,7 @@ function BooksProvider({ children }) {
       rating: book.volumeInfo.averageRating ?? null,
       ratingCount: book.volumeInfo.ratingsCount ?? null,
       page: book.volumeInfo.pageCount ?? null,
-      price: book.saleInfo.listPrice?.amount ?? null,
+      price:  book.saleInfo.retailPrice?.amount ?? book.saleInfo.listPrice?.amount ?? null,
       storeLink: book.volumeInfo.canonicalVolumeLink ?? null,
       publishedDate: new Date(book.volumeInfo.publishedDate).toLocaleDateString(
         "en-US",

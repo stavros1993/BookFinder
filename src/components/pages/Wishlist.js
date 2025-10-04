@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useBooks } from "../contexts/BooksProvider";
 import WishlistItem from "../WishlistItem";
-import DeleteConfirmationPopup from "../DeleteConfirmationPopup";
+import DeleteConfirmationPopup from "../modals/DeleteConfirmationPopup";
 import EmptyPage from "../EmptyPage";
 import Search from "../icons/Search";
 import CloseIcon from "../icons/CloseIcon";

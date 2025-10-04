@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useBooks } from "./contexts/BooksProvider";
+import { useBooks } from "../contexts/BooksProvider";
 import Modal from "react-bootstrap/Modal";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "./Modals.scss";

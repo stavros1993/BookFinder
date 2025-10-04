@@ -3,8 +3,8 @@ import { useBooks } from "../contexts/BooksProvider";
 import EmptyPage from "../EmptyPage";
 import LibraryNav from "../LibraryNav";
 import LibraryItem from "../LibraryItem";
-import DeleteConfirmationPopup from "../DeleteConfirmationPopup";
-import UpdateProgressPopup from "../UpdateProgressPopup";
+import DeleteConfirmationPopup from "../modals/DeleteConfirmationPopup";
+import UpdateProgressPopup from "../modals/UpdateProgressPopup";
 
 function Library() {
   const { library, removeFromLibrary } =
@@ -55,7 +55,7 @@ function Library() {
       {library.length === 0 ? (
         <EmptyPage title="No Books Yet">
           <p className="font-18">
-            You haven’t rated added any books to your library. Start adding
+            You haven’t added any books to your library. Start adding
             books you have read or currently reading and they will appear here
           </p>
         </EmptyPage>

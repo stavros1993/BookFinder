@@ -73,7 +73,7 @@ function WishlistItem({ item, index }) {
             <div className="row bottom-row mt-auto font-small pt-3 pt-sm-2">
               <div className="col d-none d-md-block">
                 <div className="genre-list pt-0 ">
-                  {item?.genres?.slice(0, 1).map((category, index) => (
+                  {Array.isArray(item?.genres) && item?.genres?.slice(0, 1).map((category, index) => (
                     <span className="mb-0" key={index}>
                       {category.substring(0)}
                     </span>

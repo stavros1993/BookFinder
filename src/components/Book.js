@@ -5,7 +5,7 @@ import Spinner from "./ui/Spinner";
 import StarRating from "./starRating";
 import Star from "./icons/Star";
 import "./Book.scss";
-import AddToLibraryPopup from "./AddToLibraryPopup";
+import AddToLibraryPopup from "./modals/AddToLibraryPopup";
 import Checkmark from "./icons/Checkmark";
 
 function Book() {

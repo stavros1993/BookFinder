@@ -1,6 +1,6 @@
-import { useBooks } from "./contexts/BooksProvider";
+import { useBooks } from "../contexts/BooksProvider";
 import Modal from "react-bootstrap/Modal";
-import Checkmark from "./icons/Checkmark";
+import Checkmark from "../icons/Checkmark";
 import "./Modals.scss";
 
 function AddToLibraryPopup({
